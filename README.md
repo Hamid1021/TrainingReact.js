@@ -100,3 +100,10 @@
 
 11. **Start your development server**:
    npm start
+
+12. Install Test Package
+   npm install @testing-library/jest-dom
+
+
+13. Install Lastes Comand after Edit All of js to ts file
+   npm install @testing-library/jest-dom@^5.16.5 @testing-library/react@^13.4.0 @testing-library/user-event@^13.5.0 @types/node@^16.18.23 @types/react@^18.0.28 @types/react-dom@^18.0.11 react@^18.2.0 react-dom@^18.2.0 react-scripts@5.0.1 web-vitals@^2.1.4
