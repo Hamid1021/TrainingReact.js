@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { products, ProductCard } from '../components/Product';
+import { useEffect, useState } from 'react';
 
 const Products = () => {
     const { id } = useParams<{ id: string }>();
@@ -22,7 +23,7 @@ const Products = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <ProductCard key={product.id} product={product} />
+                        <ProductCard key={product.id} Product={product}/>
                     </tbody>
                 </table>
             );
@@ -43,7 +44,7 @@ const Products = () => {
             <tbody>
                 {products.map((product) => (
                     product.is_single = false,
-                    <ProductCard key={product.id} product={product} />
+                    <ProductCard key={product.id} Product={product} />
                 ))}
             </tbody>
         </table>

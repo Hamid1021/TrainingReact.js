@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 interface Product {
@@ -30,29 +31,28 @@ export const products: Product[] = [
 ];
 
 interface PropsAttr {
-    product: Product
+    Product: Product,
 }
 
-// ProductCard component
 export const ProductCard = (props: PropsAttr) => {
-    const { product } = props;
+    const { Product } = props;
 
     return (
         <tr>
             <td>
-                <img src={product.image} alt={product.name} style={{height: 50}}/>
+                <img src={Product.image} alt={Product.name}/>
             </td>
             <td>
                 {
-                    product.is_single ? (
-                        <h2 style={{fontSize:15}}>{product.name}</h2>
+                    Product.is_single ? (
+                        <h2 style={{fontSize:15}}>{Product.name}</h2>
                     ) : (
-                        <Link to={"/products/" + product.id}><h2 style={{fontSize:15}}>{product.name}</h2></Link>
+                        <Link to={"/products/" + Product.id}><h2 style={{fontSize:15}}>{Product.name}</h2></Link>
                     )
                 }
             </td>
             <td>
-                <p>{product.price}</p>
+                <p>{Product.price}</p>
             </td>
         </tr>
     );
