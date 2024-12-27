@@ -67,14 +67,7 @@ const Products = () => {
         const product = products.find((p) => p.id === productId);
         if (product) {
             return (
-                <ProductCard 
-                    key={product.id}
-                    name={product.name}
-                    price={product.price}
-                    image={product.image}
-                    id={product.id}
-                    is_single={true}
-                />
+                <ProductCard key={product.id} product={product}/>
             )
         }
         else {
@@ -86,12 +79,7 @@ const Products = () => {
             {
                 products.map(
                     (product) => (
-                        <ProductCard key={product.id}
-                            name={product.name}
-                            price={product.price}
-                            image={product.image}
-                            id={product.id}
-                        />
+                        <ProductCard key={product.id} product={product}/>
                     )
                 )
             }
@@ -104,28 +92,22 @@ interface Product {
     id: number,
     price: string,
     image: string,
-    is_single?: boolean,
+}
+
+interface PropsAttr{
+    product:Product
 }
 
 // ProductCard component
-const ProductCard = (props:Product) => {
-    const { name, image, price, id, is_single } = props;
-
-    if (is_single){
-        return (
-            <div style={{ display: "flex", flexDirection: "row", gap: "10px", }}>
-                <img src={image} alt={name} />
-                <Link to={"/products/" + id} style={{marginTop: "30px"}}><h2>{name}</h2></Link>
-                <p style={{ marginTop: "57px", }}>{price}</p>
-            </div>
-        );
-    }
-
+const ProductCard = (props:PropsAttr) => {
+    // const { name, image, price, id, is_single } = props;
+    const {product} = props
+    
     return (
-        <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
-            <img src={image} alt={name} />
-            <Link to={"/products/" + id}><h2>{name}</h2></Link>
-            <p style={{ marginTop: "27px", }}>{price}</p>
+        <div style={{ display: "flex", flexDirection: "row", gap: "10px", }}>
+            <img src={product.image} alt={product.name} />
+            <Link to={"/products/" + product.id} style={{marginTop: "30px"}}><h2>{product.name}</h2></Link>
+            <p style={{ marginTop: "57px", }}>{product.price}</p>
         </div>
     );
 };
