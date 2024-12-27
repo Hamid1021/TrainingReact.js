@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Routes, Route, useParams, Link } from 'react-router-dom';
-import { Home } from './pages/Home';
-import { Shop } from './pages/Shop';
-import Products from './components/Product';
+import Home from './pages/Home';
+import Shop from './pages/Shop';
+import Products from './pages/Product';
 
 const App: React.FC = () => {
     return (

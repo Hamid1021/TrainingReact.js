@@ -1,5 +1,4 @@
-import React from 'react';
-
-export const Shop = () => {
+const Shop = () => {
     return <h2> Shop</h2>;
 };
+export default Shop;
