@@ -104,16 +104,12 @@ interface Product {
     id: number,
     price: string,
     image: string,
-    is_single?:false | true,
+    is_single?: boolean,
 }
 
 // ProductCard component
 const ProductCard = (props:Product) => {
-    const {name} = props;
-    const {image} = props;
-    const {price} = props;
-    const {id} = props;
-    const {is_single} = props;
+    const { name, image, price, id, is_single } = props;
 
     if (is_single){
         return (
