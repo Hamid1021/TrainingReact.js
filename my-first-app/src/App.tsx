@@ -68,6 +68,7 @@ const Products = () => {
         }
         const product = products.find((p) => p.id === productId);
         if (product) {
+            product.is_single = true;
             return (
                 <ProductCard key={product.id} product={product}/>
             )
@@ -81,6 +82,7 @@ const Products = () => {
             {
                 products.map(
                     (product) => (
+                        product.is_single = false,
                         <ProductCard key={product.id} product={product}/>
                     )
                 )
@@ -94,6 +96,7 @@ interface Product {
     id: number,
     price: string,
     image: string,
+    is_single?: boolean,
 }
 
 interface PropsAttr{
@@ -102,13 +105,18 @@ interface PropsAttr{
 
 // ProductCard component
 const ProductCard = (props:PropsAttr) => {
-    // const { name, image, price, id, is_single } = props;
     const {product} = props
     
     return (
         <div style={{ display: "flex", flexDirection: "row", gap: "10px", }}>
             <img src={product.image} alt={product.name} />
-            <Link to={"/products/" + product.id} style={{marginTop: "30px"}}><h2>{product.name}</h2></Link>
+            {
+                product.is_single ?(
+                    <h2 style={{marginTop: "50px"}}>{product.name}</h2>
+                ) : (
+                    <Link to={"/products/" + product.id} style={{marginTop: "30px"}}><h2>{product.name}</h2></Link>
+                )
+            }
             <p style={{ marginTop: "57px", }}>{product.price}</p>
         </div>
     );
