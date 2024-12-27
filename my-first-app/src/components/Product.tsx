@@ -29,25 +29,31 @@ export const products: Product[] = [
     },
 ];
 
-interface PropsAttr{
-    product:Product
+interface PropsAttr {
+    product: Product
 }
 
 // ProductCard component
-export const ProductCard = (props:PropsAttr) => {
-    const {product} = props
-    
+export const ProductCard = (props: PropsAttr) => {
+    const { product } = props;
+
     return (
-        <div style={{ display: "flex", flexDirection: "row", gap: "10px", }}>
-            <img src={product.image} alt={product.name} />
-            {
-                product.is_single ?(
-                    <h2 style={{marginTop: "50px"}}>{product.name}</h2>
-                ) : (
-                    <Link to={"/products/" + product.id} style={{marginTop: "30px"}}><h2>{product.name}</h2></Link>
-                )
-            }
-            <p style={{ marginTop: "57px", }}>{product.price}</p>
-        </div>
+        <tr>
+            <td>
+                <img src={product.image} alt={product.name} style={{height: 50}}/>
+            </td>
+            <td>
+                {
+                    product.is_single ? (
+                        <h2 style={{fontSize:15}}>{product.name}</h2>
+                    ) : (
+                        <Link to={"/products/" + product.id}><h2 style={{fontSize:15}}>{product.name}</h2></Link>
+                    )
+                }
+            </td>
+            <td>
+                <p>{product.price}</p>
+            </td>
+        </tr>
     );
 };

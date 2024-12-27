@@ -1,9 +1,10 @@
+import React from "react";
 import { useParams } from 'react-router-dom';
 import { products, ProductCard } from '../components/Product';
 
 const Products = () => {
-    const { id } = useParams<"id">();
-    
+    const { id } = useParams<{ id: string }>();
+
     if (id) {
         const productId = parseInt(id, 10);
         if (isNaN(productId)) {
@@ -13,24 +14,40 @@ const Products = () => {
         if (product) {
             product.is_single = true;
             return (
-                <ProductCard key={product.id} product={product}/>
-            )
-        }
-        else {
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ProductCard key={product.id} product={product} />
+                    </tbody>
+                </table>
+            );
+        } else {
             return <h2>Product not found</h2>;
         }
     }
+
     return (
-        <div>
-            {
-                products.map(
-                    (product) => (
-                        product.is_single = false,
-                        <ProductCard key={product.id} product={product}/>
-                    )
-                )
-            }
-        </div>
-    )
-}
+        <table>
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {products.map((product) => (
+                    product.is_single = false,
+                    <ProductCard key={product.id} product={product} />
+                ))}
+            </tbody>
+        </table>
+    );
+};
 export default Products
